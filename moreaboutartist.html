@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artist Portfolio - Pixelaria</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #c5ae93;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header img {
+      border-radius: 100px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    header p {
+      font-style: italic;
+      color: #2f2f2f;
+    }
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    .badges span {
+      background: #eee;
+      padding: 6px 12px;
+      margin: 4px;
+      border-radius: 20px;
+      display: inline-block;
+      font-size: 14px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .skill {
+      background: #f1f1f1;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+    .projects li {
+      margin-bottom: 10px;
+    }
+    blockquote {
+      font-style: italic;
+      color: #555;
+      border-left: 4px solid #333;
+      padding-left: 10px;
+    }
+    .contact a {
+      display: inline-block;
+      margin-right: 15px;
+      color: #333;
+      text-decoration: none;
+    }
+    /* Tombol style sama untuk download CV dan back to home */
+    .cta-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #333;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+    .cta-button:hover {
+      background: #555;
+      transform: scale(1.05);
+    }
+    .back-home-container {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img id="profile-photo" src="" alt="Artist Photo">
+  <h1 id="artist-name">Artist Name</h1>
+  <p id="artist-tagline">“Tagline”</p>
+</header>
+<main>
+  <section>
+    <h2>About Me</h2>
+    <p id="artist-description"></p> <!-- Tambahan deskripsi -->
+    <p><strong>Jurusan:</strong> <span id="artist-major"></span></p>
+    <p><strong>Angkatan:</strong> <span id="artist-batch"></span></p>
+    <div class="badges" id="artist-badges"></div>
+  </section>
+  <section>
+    <h2>Portfolio Showcase</h2>
+    <div class="gallery" id="artist-portfolio"></div>
+  </section>
+  <section>
+    <h2>Skill Set</h2>
+    <div class="skills" id="artist-skills"></div>
+  </section>
+  <section>
+    <h2>Experience & Projects</h2>
+    <ul class="projects" id="artist-projects"></ul>
+  </section>
+  <section>
+    <h2>Quote</h2>
+    <blockquote id="artist-quote"></blockquote>
+  </section>
+  <section class="contact">
+    <h2>Contact & Social</h2>
+    <div id="artist-contacts"></div>
+    <br>
+    <!-- Tombol Download CV sudah pakai atribut download -->
+    <a class="cta-button" id="artist-cv" href="#" download>📄 Download CV</a>
+  </section>
+
+  <!-- Tombol Back to Home -->
+  <div class="back-home-container">
+    <a href="index.html" class="cta-button">🏠 Back to Home</a>
+  </div>
+</main>
+
+<script>
+const artistsData = {
+  "hanum-febriyani": {
+    name: "Hanum Febriyani",
+    photo: "images/profile-images/hanum-photo.jpg",
+    tagline: "Design with dimension, create with intention.",
+    description: "Hanum Febriyani is a multimedia student passionate about visual storytelling and interactive design. With skills in motion graphics, UI/UX, and creative coding, her works like Fragments and Bloom blend futuristic aesthetics with personal narratives. Actively involved in campus organizations, she brings both creativity and collaboration into every project.",
+    major: "S1 Terapan Teknologi Rekayasa Multimedia",
+    batch: "2023",
+    badges: ["💻 3D Design", "🎨 Graphic Design"],
+    portfolio: [
+      {
+        image: "images/artwork-images/hanum-artwork1.jpg",
+        title: "Travel Booking App UI",
+        type: "UI/UX Design | Figma",
+        desc: "A mobile interface design for a seamless travel booking experience, including destination exploration, bank payment integration, and booking confirmation flow."
+      },
+      {
+        image: "images/artwork-images/hanum-artwork2.jpg",
+        title: "Design System: Public Service App",
+        type: "UI Design | Design System",
+        desc: "A comprehensive design system featuring a consistent color palette, typography, iconography, and reusable UI components for a government-related digital service."
+      },
+      {
+        image: "images/artwork-images/hanum-artwork3.jpg",
+        title: "Predictive Model Evaluation",
+        type: "Data Science | Python",
+        desc: "A machine learning evaluation using Random Forest to classify scheduling labels, presented with a confusion matrix, accuracy, precision, and recall metrics."
+      }
+    ],
+    skills: [
+      "<i class='fab fa-adobe'></i> Photoshop – Intermediate",
+    ],
+    projects: [
+      "<strong>Panitia Acara Dies Natalis TRM 2023</strong> – Divisi Sponsor (2023)",
+      "<strong>Himpunan Mahasiswa Teknologi Rekayasa Multimedia</strong> – Creative Staff (2023)",
+    ],
+    quote: "Design is intelligence made visible. – Alina Wheeler",
+    contacts: [
+      { icon: "fa-envelope", label: "Email", link: "mailto:hanumfebriyani@icloud.com" },
+      { icon: "fab fa-instagram", label: "Instagram", link: "http://instagram.com/haanuuum" },
+      { icon: "fas fa-globe", label: "Portfolio", link: "https://alicejohnson.myportfolio.com" }
+    ],
+    cvLink: "CVHanum.png"  // <-- pastikan file ini ada di server kamu
+  },
+
+  "riyana-alifiya": {
+    name: "Riyana Alifiya",
+    photo: "images/profile-images/riyana-photo.jpg",
+    tagline: "A Canvas of Life, A Gallery of Soul.",
+    description: "Riyana Alifiya is a multimedia student with a passion for visual storytelling and content creation. Her work blends vibrant design, strong project management, and creative direction, as seen in projects like Urban Dreams and Light & Shadow. With skills ranging from graphic design to hosting events, she brings both clarity and charisma to every creative endeavor.",
+    major: "S1 Terapan Teknologi Rekayasa Multimedia",
+    batch: "2023",
+    badges: ["📸 Content Creating", "🎞️ Project Manager", "🎨 Graphic Design", "Master of Ceremonies"],
+    portfolio: [
+      {
+        image: "images/artwork-images/riyana-artwork1.png",
+        title: "News Studio Room",
+        type: "3D Design | Blender",
+        desc: "A vibrant, futuristic news studio rendered in Blender, featuring smooth curves, glossy surfaces, and a playful color scheme of pink, green, and purple. The bold design gives the space a sleek and modern broadcast vibe."
+      },
+      {
+        image: "images/artwork-images/riyana-artwork2.jpg",
+        title: "Lemon Lily Girl",
+        type: "Illustration | Digital Art",
+        desc: "A soft and whimsical digital illustration of a red-haired girl surrounded by lemons and lily flowers. With heart-shaped blush, star accents, and warm pastel tones, the piece radiates a gentle, cheerful charm. The playful details and textured brushstrokes give it a cozy, storybook feel."
+      },
+      {
+        image: "images/artwork-images/riyana-artwork3.jpg",
+        title: "Master of Ceremonies",
+        type: "Welcoming Party 2024 | Digital Creative Multimedia",
+        desc: "A digital tribute to my role as the Master of Ceremonies at Welcoming Party 2024. This piece captures the vibrant atmosphere of the event and the joy of connecting with the audience. Created as part of a Digital Creative Multimedia project, it reflects both the energy of the celebration and the essence of being a welcoming voice for new beginnings."
+      }
+    ],
+    skills: [
+      "<i class='fas fa-camera'></i> Adobe Illustrator & Photoshop – Advanced",
+      "<i class='fab fa-adobe'></i> Project Managing – Intemediate",
+      "<i class='fab fa-adobe'></i> Content Creating – Intermediate",
+      "<i class='fab fa-adobe'></i> Master of Ceremonies – Advanced",
+      "<i class='fab fa-adobe'></i> Blender – Intermediate",
+    ],
+    projects: [
+      "<strong>Multimedia Attractive Party Section 2024</strong> – Vice Director (2024)",
+      "<strong>Metalabs – Product Design Lab Assistant (2025)",
+      "<strong>BluwiePixie – Design Service (Freelancer) (2023-present)"
+    ],
+    quote: "In a world full of noise, I choose to design silence that speaks.",
+    contacts: [
+      { icon: "fa-envelope", label: "Email", link: "mailto:katiliriyana34@gmail.com" },
+      { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/riyana.lfy?igsh=MW5wZTJpbDhqOWp4Zg%3D%3D&utm_source=qr" },
+      { icon: "fas fa-globe", label: "Portfolio", link: "riyana-alifiya-portfolio.pdf" }
+    ],
+    cvLink: "riyana-alifiya-cv.pdf"
+  },
+
+  "dynda-camelia": {
+    name: "Dynda Camelia",
+    photo: "images/profile-images/dynda-photo.jpg",
+    tagline: "Art is fun.",
+    description: "Dynda Camelia is a multimedia student with a strong focus on graphic and 3D design. Her portfolio showcases playful creativity and technical skill, seen in works like Silent Echo, Urban Dreams, and Light & Shadow. With expertise in Blender, Adobe Suite, and a passion for visual aesthetics, she crafts compelling visuals that balance imagination and structure.",
+    major: "S1 Terapan Teknologi Rekayasa Multimedia",
+    batch: "2023",
+    badges: ["🎞️ 3D Design", "🎨 Graphic Design"],
+    portfolio: [
+      {
+        image: "images/artwork-images/dynda-artwork1.jpg",
+        title: "Kazuha's Echo",
+        type: "Digital Art | Character Illustration | Fantasy",
+        desc: "A clean and focused portrait of Kazuha, emphasizing his calm expression and elegant design with no background distractions—pure simplicity capturing the character’s essence."
+      },
+      {
+        image: "images/artwork-images/dynda-artwork2.jpg",
+        title: "Yaksha's Grace",
+        type: "Digital Art | Character Portrait | Minimalist",
+        desc: "A focused and striking portrait of Xiao, capturing his intense gaze and mysterious aura with a clean, background-free composition—highlighting the essence of the vigilant Yaksha in pure form."
+      },
+      {
+        image: "images/artwork-images/dynda-artwork3.jpg",
+        title: "Charming Veil",
+        type: "Digital Art | Character Portrait | Minimalist",
+        desc: "A playful and casual portrait of Scaramouche, highlighting his mischievous charm and softer side. With a simple background, this piece brings out a lighthearted, adorable vibe that contrasts his usual mysterious persona."
+      }
+    ],
+    skills: [
+      "<i class='fas fa-camera'></i> Digital Art  – Advanced",
+      "<i class='fas fa-camera'></i> Adobe  – Intermediate",
+      "<i class='fab fa-adobe'></i> Figma – Intemediate",
+      "<i class='fab fa-adobe'></i> Blender – Advanced",
+      "<i class='fab fa-adobe'></i> Microsoft Word – Intermediate",
+    ],
+    projects: [
+      "<strong>Welcoming Party 2024</strong> – Staff Divisi Dekorasi (2024)",
+      "<strong>TIMES 8.0 2024</strong> – Staff Evaluation Team (2024)",
+      "<strong>Multimedia Attractive Party Section 2024</strong> – Staff Decoration Team (2024)"
+    ],
+    quote: "Never be afraid to be creative for art.",
+    contacts: [
+      { icon: "fa-envelope", label: "Email", link: "mailto:cameliadynda@gmail.com" },
+      { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/dyynnndaa?igsh=Z2tkb2tkNHhncjBs" },
+      { icon: "fas fa-globe", label: "Portfolio", link: "https://elizabetholson.artstation.com" }
+    ],
+    cvLink: "#"
+  },
+
+  "michael-davin": {
+    name: "Michael Davin",
+    photo: "images/profile-images/michael-photo.jpg",
+    tagline: "Crafting Stories Through Every Frame",
+    description: "Michael Davin is a passionate multimedia technology student specializing in photography, videography, and SEO. With a calm and easy-going approach, Michael transforms every project—ranging from weddings and engagements to corporate profiles and product shoots—into a compelling visual story. Always aiming for clarity and creativity, Michael blends technical skills with an eye for detail to bring ideas to life.",
+    major: "S1 Terapan Teknologi Rekayasa Multimedia",
+    batch: "2023",
+    badges: ["📸 Photography", "🎥 Videography", "SEO"],
+    portfolio: [
+      {
+        image: "images/artwork-images/michael-artwork1.png",
+        title: "Cheddar Crumbs",
+        type: "Photography | Food Product Shoot",
+        desc: "A close-up capture of Kastengel’s golden, crispy texture, showcasing the perfect balance of buttery crunch and cheesy goodness in every bite. A visual treat that brings this classic Indonesian snack to life."
+      },
+      {
+        image: "images/artwork-images/michael-artwork2.jpg",
+        title: "Urban Roast Duo",
+        type: "Photography | Coffee Product Shoot",
+        desc: "Two cool men, sharing bold coffee and effortless style—where flavor meets confidence in every sip."
+      },
+      {
+        image: "images/artwork-images/michael-artwork3.jpg",
+        title: "Taste in Type: Comfort Food Stories",
+        type: "Typographic Photography | Comfort Food Visual",
+        desc: "A harmonious blend of mouthwatering comfort food imagery and expressive typography, designed to evoke warmth, nostalgia, and the simple joys of home-cooked flavors."
+      }
+    ],
+    skills: [
+      "<i class='fas fa-camera'></i> Photography  – Advanced",
+      "<i class='fab fa-adobe'></i> Videography – Advanced",
+      "<i class='fab fa-adobe'></i> SEO – Intermediate",
+    ],
+    projects: [
+      "<strong>Wedding Photography",
+      "<strong>Engagement Photography",
+      "<strong>Company Profile",
+      "<strong>Graduation Photography",
+      "<strong>Product Photography",
+        "<strong>Videography",
+    ],
+    quote: "Every frame is a story waiting to be told — where clarity meets creativity, and moments become timeless.",
+    contacts: [
+      { icon: "fa-envelope", label: "Email", link: "mailto:michaeldavin.contact@gmail.com" },
+      { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/mchldavin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+      { icon: "fas fa-globe", label: "Portfolio", link: "michael-davin-portfolio.pdf" }
+    ],
+    cvLink: "michael-davin-cv.pdf"
+  },
+
+   "fauziah-tsania": {
+    name: "Fauziah Tsania",
+    photo: "images/profile-images/fauziah-photo.jpg",
+    tagline: "The F is for Fab.",
+    description: "Fauziah, a Multimedia student from the class of 2023, sees design as a form of visual communication that speaks louder than words. With expertise in Photoshop, Illustrator, Figma, and Blender, she brings concepts to life through thoughtful and expressive design—balancing creativity with technical fluency.",
+    major: "S1 Terapan Teknologi Rekayasa Multimedia",
+    batch: "2023",
+    badges: ["📸 Photography", "🎥 Videography", "🎨 Graphic Design"],
+    portfolio: [
+      {
+        image: "images/artwork-images/fauziah-artwork1.png",
+        title: "Open Recruitment CCI 2024/2025",
+        type: "Graphic Design | Adobe Photoshop & Illustrator",
+        desc: "Vibrant visuals for a student organization recruitment, featuring modern 3D elements and a clean, informative layout."
+      },
+      {
+        image: "images/artwork-images/fauziah-artwork2.png",
+        title: "Company Visit ID Cards",
+        type: "Graphic Design | Adobe Illustrator",
+        desc: "A bold and modern design for company visit role cards, highlighting the core team members with bright orange-themed graphics and confident typography to reflect leadership and clarity."
+      },
+      {
+        image: "images/artwork-images/fauziah-artwork3.png",
+        title: "Mockup Packaging",
+        type: "Packaging Design | Adobe Illustrator",
+        desc: "Warm and elegant packaging design for a fictional honey brand, highlighting natural charm and sweetness."
+      }
+    ],
+    skills: [
+      "<i class='fas fa-camera'></i> Photography  – Advanced",
+      "<i class='fab fa-adobe'></i> Videography – Intermediate",
+      "<i class='fab fa-adobe'></i> Adobe Photoshop & Illustrator – Advanced",
+    ],
+    projects: [
+      "<strong>Welcoming Party 2024</strong> – Staff of Publication & Documentation Team (2024)",
+      "<strong>Himpunan Mahasiswa Teknologi Rekayasa Multimedia</strong> – Head of Kominfo Department (2025)",
+      "<strong>Multimedia Attractive Party Section 2024</strong> – Head of Promotion Team (2025)"
+    ],
+    quote: "Design is how I turn thought into feeling.",
+    contacts: [
+      { icon: "fa-envelope", label: "Email", link: "mailto:michaeldavin.contact@gmail.com" },
+      { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/syaevv?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+      { icon: "fas fa-globe", label: "Portfolio", link: "fauziah-portfolio.pdf" }
+    ],
+    cvLink: "fauziah-portfolio.pdf"
+  },
+  
+  "risya-adhi": {
+    name: "Risya Adhi",
+    photo: "images/profile-images/risya-photo.jpg",
+    tagline: "Crafting visuals with purpose and passion",
+    description: "Risya is a Digital Creative Multimedia student (2023) with skills in UI/UX, branding, and digital illustration. She creates thoughtful, message-driven visuals—blending concept and craft through tools like Illustrator, Photoshop, and Figma.",
+    major: "S1 Terapan Teknologi Rekayasa Multimedia",
+    batch: "2023",
+    badges: ["📸 UI/UX Design", "🎥 Motion Graphic", "🎨 Ilustrasi Digital", "Branding & Visual Identity"],
+    portfolio: [
+      {
+        image: "images/artwork-images/risya-artwork1.jpg",
+        title: "Piring Kosong",
+        type: "Digital Collage | AU Cover Art | Scrapbook-Style Design",
+        desc: "A playful and nostalgic school-themed visual featuring scrapbook textures, food stickers, and K-pop inspired characters. This cover captures the lighthearted yet emotionally layered story of two best friends navigating youth and emptiness behind cheerful routines."
+      },
+      {
+        image: "images/artwork-images/risya-artwork2.jpg",
+        title: "Berry Cute",
+        type: "Digital Art | Illustration Drawing",
+        desc: "A playful and vibrant character drawing featuring a face peeking from within a strawberry, surrounded by colorful symbols like a heart, exclamation mark, and star, evoking a whimsical and childlike mood."
+      },
+      {
+        image: "images/artwork-images/risya-artwork3.jpg",
+        title: "Quiet Girl with Heart Patch",
+        type: "Digital Art | Character Illustration",
+        desc: "A black and white hand-drawn portrait of a girl with short dark hair and expressive eyes, subtly enhanced by a small heart patch on her cheek, radiating a soft and introspective atmosphere."
+      }
+    ],
+    skills: [
+      "<i class='fas fa-camera'></i> Adobe Illustrator & Photoshop  – Intermediate",
+      "<i class='fab fa-adobe'></i> Figma – Intermediate",
+      "<i class='fab fa-adobe'></i> Sketching & Concepting – Advanced",
+    ],
+    projects: [
+      "<strong>SMK Al Muslim Yearbook & Class Jacket</strong> – Designer (2024)",
+      "<strong>Himpunan Mahasiswa Teknologi Rekayasa Multimedia</strong> – Head of Pengmas Department (2025)",
+    ],
+    quote: "Design bukan hanya soal estetika, tapi juga tentang menyampaikan pesan yang tepat.",
+    contacts: [
+      { icon: "fa-envelope", label: "Email", link: "mailto:risyaadhi4@email.com" },
+      { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/risespuff/?utm_source=ig_web_button_share_sheet" },
+      { icon: "fas fa-globe", label: "Portfolio", link: "fauziah-portfolio.pdf" }
+    ],
+    cvLink: "#"
+  },
+
+  "fachri-alpiansyah": {
+    name: "Muhammad Fachri Alpiansyah",
+    photo: "images/profile-images/fachri-photo.jpg",
+    tagline: "Creative all of my life.",
+    description: "Fachri, a TRM student from the class of 2023, believes creativity isn’t something you buy—it’s something you build. With skills in Canva, CapCut, and Figma, he brings ideas to life through digital content, combining visual storytelling with media strategy to create meaningful engagement.",
+    major: "S1 Terapan Teknologi Rekayasa Multimedia",
+    batch: "2023",
+    badges: ["📸 Content Creating", "🎥 Videographer", "🎨 Graphic Design", "Media Management"],
+    portfolio: [
+      {
+        image: "images/artwork-images/fachri-artwork1.png",
+        title: "Modern Frames",
+        type: "Graphic Design | Social Media Design | Instagram Feed",
+        desc: "A clean and balanced visual approach that highlights simplicity and elegance, creating a seamless scroll experience for every viewer."
+      },
+      {
+        image: "images/artwork-images/fachri-artwork2.png",
+        title: "Emblem of Waiku: A Myth in Motion",
+        type: "Branding | Logo Design",
+        desc: "A modern, culturally inspired logo crafted for Waiku Store, featuring a stylized mythical figure in multiple color variations to ensure adaptability and strong brand recognition across diverse platforms."
+      },
+      {
+        image: "images/artwork-images/fachri-artwork3.png",
+        title: "Colorful Echoes of Campus Life",
+        type: "Digital Content | Social Media Reels",
+        desc: "A series of engaging reels designed for UKM CCI Telkom University, combining vibrant visuals, playful typography, and campus storytelling to introduce divisions, welcome new members, and promote open recruitment events."
+      }
+    ],
+    skills: [
+      "<i class='fas fa-camera'></i> Canva, Capcut - Advanced",
+      "<i class='fab fa-adobe'></i> Figma – Intermediate",
+      "<i class='fab fa-adobe'></i> Videography & Content Creating – Advanced",
+    ],
+    projects: [
+      "<strong>Nesnumutu Store</strong> – Social Media Specialist (2024)",
+      "<strong>Ayam Kampus Archipelago</strong> – Content Media (2025)",
+    ],
+    quote: "Kreatif bukan hal yang bisa dibeli tapi di ciptakan.",
+    contacts: [
+      { icon: "fa-envelope", label: "Email", link: "mailto:riifachrialfi@gmail.com" },
+      { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/fachrialpii?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+      { icon: "fas fa-globe", label: "Portfolio", link: "fachri-portfolio.pdf" }
+    ],
+    cvLink: "fachri-portfolio.pdf"
+  },
+
+  "fadlila-zahra": {
+    name: "Fadlila Zahra Achdalina",
+    photo: "images/profile-images/zahra-photo.jpg",
+    tagline: "Edutech.",
+    description: "Tech-savvy and design-driven, Zahra is a 2023 Multimedia Engineering student focusing on Edutech. With roles in mobile development and creative leadership, she combines code and creativity to build impactful digital experiences.",
+    major: "S1 Terapan Teknologi Rekayasa Multimedia",
+    batch: "2023",
+    badges: ["2D Animation", "Web Development", "🎨 Front-end Mobile Developer"],
+    portfolio: [
+      {
+        image: "images/artwork-images/zahra-artwork1.jpg",
+        title: "Elements of Terrain",
+        type: "Illustration | Environment Design | Game Assets",
+        desc: "A stylized depiction of diverse terrain elements—forest, mountains, cave, and ocean—created with a cohesive hand-drawn aesthetic, ideal for use in 2D adventure or educational games."
+      },
+      {
+        image: "images/artwork-images/zahra-artwork2.jpg",
+        title: "Midnight Alley",
+        type: "Digital Art | Background Illustration | Visual Storytelling",
+        desc: "An atmospheric digital illustration of a nighttime alley lit by soft streetlamps, using deep purples and gold tones to create a cinematic, moody setting suitable for visual storytelling or animated backgrounds."},
+      {
+        image: "images/artwork-images/zahra-artwork3.jpg",
+        title: "Connect with EMO",
+        type: "UI/UX Design | Mobile App Interface",
+        desc: "A clean and modern mobile app interface design for device authentication, paired with a matching black utility vest concept. The layout emphasizes clarity, bold typography, and a sleek, professional aesthetic."
+        }
+    ],
+    skills: [
+      "<i class='fas fa-adobe'></i> Phyton",
+      "<i class='fab fa-adobe'></i> Flutter",
+      "<i class='fab fa-adobe'></i> React",
+      "<i class='fab fa-adobe'></i> Figma",
+      "<i class='fab fa-adobe'></i> Adobe"
+    ],
+    projects: [
+      "<strong>Creativity Corner</strong> – Front-end Mobile Developer",
+      "<strong>Helphin</strong> – Social Media Manager (2025)",
+      "<strong>ESC Laboratory</strong> – Head of Creative & Design (2025)",
+    ],
+    quote: "Never stop learning.",
+    contacts: [
+      { icon: "fa-envelope", label: "Email", link: "mailto:fadlilazahrach@gmail.com" },
+      { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/ara_asmarasenja?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+      { icon: "fas fa-globe", label: "Portfolio", link: "zahra-portfolio.pdf" }
+    ],
+    cvLink: "#"
+  },
+
+  "ilham-firdaus": {
+    name: "Muhamad Ilham Firdaus",
+    photo: "images/profile-images/ilham-photo.jpg",
+    tagline: "Guiding Imagination, Managing Creativity",
+    description: "Focused and design-oriented, Muhamad Ilham Firdaus is a 2023 Multimedia Engineering student with a passion for game design. Skilled in project management and data science basics, he combines strategic thinking and creativity to lead impactful game projects.",
+    major: "S1 Terapan Teknologi Rekayasa Multimedia",
+    batch: "2023",
+    badges: ["Managers", "Game Designers", "Data Science"],
+    portfolio: [
+      {
+        image: "images/artwork-images/ilham-artwork1.png",
+        title: "Elements of Terrain",
+        type: "Illustration | Environment Design | Game Assets",
+        desc: "A stylized depiction of diverse terrain elements—forest, mountains, cave, and ocean—created with a cohesive hand-drawn aesthetic, ideal for use in 2D adventure or educational games."
+      },
+      {
+        image: "images/artwork-images/ilham-artwork2.png",
+        title: "PCM 2024 Training Poster",
+        type: "Digital Announcement | Telkom University | Online Training",
+        desc: "A digital poster design announcing the PCM 2024 training event from Telkom University. Presents the main information—Saturday, June 1st, 2024, at 19.15 WIB, via Microsoft Teams—with a modern visualization and chess-themed elements, designed to invite public participation in the online training session."
+      },
+      {
+        image: "images/artwork-images/ilham-artwork3.png",
+        title: "Connect with EMO",
+        type: "Garment Design | Workwear | Visual Identity",
+        desc: "A design visualization of a professional vest, showing front and back views. Featuring functional pockets, a logo detail on the left chest, a name placeholder on the right chest, and the text INSPEKTORAT on the back, this dark-colored design is ideal as an official uniform or visual identity for a team or department."
+      }
+    ],
+    skills: [
+      "<i class='fas fa-adobe'></i> Adobe Photoshop & Illustrator",
+      "<i class='fab fa-adobe'></i> Phyton",
+      "<i class='fab fa-adobe'></i> Figma",
+      "<i class='fab fa-adobe'></i> Trello"
+    ],
+    projects: [
+      "<strong>Fried Rice Apocalypse Game</strong> – Project Manager",
+      "<strong>Seed of Hope Game</strong> – Project Manager",
+      "<strong>ESC Laboratory</strong> – Head of Creative & Design (2025)",
+    ],
+    quote: "Success in any project comes from discipline in managing ideas and fostering harmonious collaboration.",
+    contacts: [
+      { icon: "fa-envelope", label: "Email", link: "mailto:milhamfirdaus27@gmail.comm" },
+      { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/muhamad.ilham_f/?utm_source=ig_web_button_share_sheet" },
+      { icon: "fas fa-globe", label: "Portfolio", link: "ilham-portfolio.pdf" }
+    ],
+    cvLink: "ilham-cv.png"
+  }
+};
+
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+function clearElement(el) {
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
+}
+
+function renderArtist(artistKey) {
+  const artist = artistsData[artistKey];
+  if (!artist) {
+    alert("Artist not found.");
+    return;
+  }
+
+  document.getElementById("profile-photo").src = artist.photo;
+  document.getElementById("profile-photo").alt = artist.name + " Photo";
+  document.getElementById("artist-name").textContent = artist.name;
+  document.getElementById("artist-tagline").textContent = "“" + artist.tagline + "”";
+  document.getElementById("artist-major").textContent = artist.major;
+  document.getElementById("artist-batch").textContent = artist.batch;
+  document.getElementById("artist-description").textContent = artist.description;
+
+
+  const badgesContainer = document.getElementById("artist-badges");
+  clearElement(badgesContainer);
+  artist.badges.forEach(badge => {
+    const span = document.createElement("span");
+    span.textContent = badge;
+    badgesContainer.appendChild(span);
+  });
+
+  const portfolioContainer = document.getElementById("artist-portfolio");
+  clearElement(portfolioContainer);
+  artist.portfolio.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "gallery-item";
+    div.innerHTML = `
+      <img src="${item.image}" alt="${item.title}" />
+      <h3>${item.title}</h3>
+      <p><em>${item.type}</em></p>
+      <p>${item.desc}</p>
+    `;
+    portfolioContainer.appendChild(div);
+  });
+
+  const skillsContainer = document.getElementById("artist-skills");
+  clearElement(skillsContainer);
+  artist.skills.forEach(skillHTML => {
+    const div = document.createElement("div");
+    div.className = "skill";
+    div.innerHTML = skillHTML;
+    skillsContainer.appendChild(div);
+  });
+
+  const projectsContainer = document.getElementById("artist-projects");
+  clearElement(projectsContainer);
+  artist.projects.forEach(proj => {
+    const li = document.createElement("li");
+    li.innerHTML = proj;
+    projectsContainer.appendChild(li);
+  });
+
+  document.getElementById("artist-quote").textContent = artist.quote;
+
+  const contactsContainer = document.getElementById("artist-contacts");
+  clearElement(contactsContainer);
+  artist.contacts.forEach(contact => {
+    const a = document.createElement("a");
+    a.href = contact.link;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.innerHTML = `<i class="fa ${contact.icon}"></i> ${contact.label}`;
+    contactsContainer.appendChild(a);
+  });
+
+  // Set href dan download attribute tombol CV
+  const cvButton = document.getElementById("artist-cv");
+  cvButton.href = artist.cvLink;
+  cvButton.setAttribute('download', '');
+}
+
+// Ambil parameter ?artist=alice-johnson (atau elizabeth-olson)
+const artistParam = getQueryParam("artist") || "hanum-febriyani";
+renderArtist(artistParam);
+</script>
+</body>
+</html>

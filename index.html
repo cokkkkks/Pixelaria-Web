@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Pixelaria - Multimedia Interactive Portofolio</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Namari Color CSS -->
+    <link rel="stylesheet" href="css/namari-color.css">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Animate CSS-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+     <!-- JavaScript -->
+    <script defer>
+        function scrollDown(event) {
+        // Ambil posisi tombol "Explore More" relatif terhadap bagian atas halaman
+        const button = event.target;
+        const buttonPosition = button.getBoundingClientRect().top + window.pageYOffset;
+
+        // Scroll ke posisi 500px lebih rendah dari tombol tersebut
+        window.scrollTo({
+            top: buttonPosition + 500,  // Geser 500px dari tombol
+            behavior: 'smooth'
+        });
+    }
+    </script>
+
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status" class="la-ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!--End of Preloader-->
+
+<div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
+    <div class="top-border wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"></div>
+    <div class="right-border wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;"></div>
+    <div class="bottom-border wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;"></div>
+    <div class="left-border wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"></div>
+</div>
+
+<div id="wrapper">
+
+    <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5">
+        <div id="header" class="nav-collapse">
+            <div class="row clearfix">
+                <div class="col-1">
+
+                    <!--Logo-->
+                    <div id="logo">
+
+                        <!--Logo that is shown on the banner-->
+                        <img src="images/logo.png" id="banner-logo" alt="Landing Page"/>
+                        <!--End of Banner Logo-->
+
+                        <!--The Logo that is shown on the sticky Navigation Bar-->
+                        <img src="images/logo.png" id="navigation-logo" alt="Landing Page"/>
+                        <!--End of Navigation Logo-->
+
+                    </div>
+                    <!--End of Logo-->
+
+                    <aside>
+
+                    <!--Social Icons in Header-->
+                    <ul class="social-icons">
+                        <li>
+                            <a target="_blank" title="YouTube" href="https://youtube.com/playlist?list=PLZzentqbo0UqzFJbelVmq4e4HmMUQI_Lc&si=EkqoO4XlQM1YFU6G">
+                                <i class="fa fa-youtube fa-1x"></i><span>YouTube</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" title="Gmail" href="mailto:hanumfebriyani@student.telkomuniversity.ac.id">
+                                <i class="fa fa-envelope fa-1x"></i><span>Gmail</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" title="Instagram" href="https://www.instagram.com/s1trm.fit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                                <i class="fa fa-instagram fa-1x"></i><span>Instagram</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--End of Social Icons in Header-->
+
+
+                    </aside>
+
+                    <!--Main Navigation-->
+                    <nav id="nav-main">
+                        <ul>
+                            <li>
+                                <a href="#banner">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about">About</a>
+                            </li>
+                            <li>
+                                <a href="#gallery">May's Pick</a>
+                            </li>
+                            <li>
+                                <a href="#services">Art Guide 101</a>
+                            </li>
+                            <li>
+                                <a href="#testimonials">From our artists</a>
+                            </li>
+                            <li>
+                                <a href="#clients">Wall of Fame</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!--End of Main Navigation-->
+
+                    <div id="nav-trigger"><span></span></div>
+                    <nav id="nav-mobile"></nav>
+
+                </div>
+            </div>
+        </div><!--End of Header-->
+
+        <!--Banner Content-->
+        <div id="banner-content" class="row clearfix">
+
+            <div class="col-38">
+
+                <div class="section-heading">
+                    <h1>Multimedia Student Interactive Portofolio</h1>
+                    <h2>Discover the creativity and innovation of multimedia students through an 
+                        interactive platform. This space features dynamic portfolios showcasing a wide range of digital art, design, video, 
+                        and multimedia projects that highlight the skills and talents of emerging creators in 
+                        the field.</h2>
+                </div>
+
+                <!--Call to Action-->
+                <button class="button" onclick="scrollDown(event)">EXPLORE MORE</button>
+                <!--End Call to Action-->
+
+            </div>
+
+        </div><!--End of Row-->
+    </header>
+
+    <!--Main Content Area-->
+    <main id="content">
+
+        <!--Introduction-->
+        <section id="about" class="introduction scrollto">
+
+            <div class="row clearfix">
+
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h3>PIXELARIA</h3>
+                        <h2 class="section-title">About Us</h2>
+                        <p class="section-subtitle">Welcome to Pixelaria – a dynamic platform dedicated to showcasing the creativity and innovative projects of multimedia students. Our goal is to provide an interactive space where emerging talents in digital art, design, animation, and multimedia storytelling 
+                            can display their work. At Pixelaria, we believe in the power of creativity to inspire, engage, and transform the digital landscape. 
+                            Whether you’re a student, a professional, or an enthusiast, explore the incredible portfolios that demonstrate the future of 
+                            multimedia.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="col-2-3">
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.1s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa fa-laptop fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Our Mission</h4>
+                            <p>Foster a creative environment &amp; platform where multimedia students can gain
+                                visibility & recognition for their skills.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.3s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa fa-rocket fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Our Vision</h4>
+                            <p>Empower multimedia students by providing them a platform to connect with
+                                professionals in the creative industry.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.5s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa fa-users fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Collaborate & Grow</h4>
+                            <p>Find collaboration opportunities with other students & professionals.
+                                Work together, learn from each other, and grow in your creative journey.</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                    <!--Icon Block-->
+                    <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.5s">
+                        <!--Icon-->
+                        <div class="icon">
+                            <i class="fa fa-question fa-2x"></i>
+                        </div>
+                        <!--Icon Block Description-->
+                        <div class="icon-block-description">
+                            <h4>Why Pixelaria?</h4>
+                            <p>Whether you're looking to explore creative portfolios or submit your own, Pixelaria is the place to be.
+                                Join our community and discover the next generation of multimedia artists!</p>
+                        </div>
+                    </div>
+                    <!--End of Icon Block-->
+
+                </div>
+
+            </div>
+
+
+        </section>
+        <!--End of Introduction-->
+
+
+        <!--Gallery-->
+        <aside id="gallery" class="row text-center scrollto clearfix">
+
+                <a href="images/gallery-images/gallery-image-1.jpg" data-featherlight="image" class="col-1 wow fadeIn"
+                   data-wow-delay="0.3s"
+                   data-artist-name="-Whispers in Bloom by Elira Nocturne-" 
+                   data-artwork-description="Each petal holds a story untold.
+                    A gentle whisper of emotions that once bloomed quietly in the heart, 
+                    now painted in shades only silence understands.">
+                   <img src="images/gallery-images/gallery-image-1.jpg" alt="Landing Page"/>
+                </a>
+
+                <!-- Tombol See More -->
+                <div class="see-more-container">
+                    <a href="moreaboutartist.html?artist=hanum-febriyani" class="see-more-button" target="_blank">
+                       More About The Artist
+                    </a>
+                </div>
+
+                <a href="images/gallery-images/gallery-image-2.jpg" data-featherlight="image" class="col-1 wow fadeIn"
+                   data-wow-delay="0.3s"
+                   data-artist-name="-Threaded Skies by Virella Mae-" 
+                   data-artwork-description="I stitched the sky with colors I couldn't name,
+                   threading hope between clouds and 
+                   letting dreams dangle like stars that refuse to fall.">
+                   <img src="images/gallery-images/gallery-image-2.jpg" alt="Landing Page"/>
+                </a> 
+
+                <!-- Tombol See More -->
+                <div class="see-more-container">
+                    <a href="moreaboutartist.html?artist=riyana-alifiya" class="see-more-button">
+                        More About The Artists
+                    </a>
+                </div>
+
+                <a href="images/gallery-images/gallery-image-3.jpg" data-featherlight="image" class="col-1 wow fadeIn"
+                   data-wow-delay="0.5s"
+                   data-artist-name="-The Quiet Uproar by Kael Ardent-"
+                   data-artwork-description="There is a storm within the stillness, 
+                   a voice that doesn't scream but resonates,
+                   not in noise, but in the weight of emotion that 
+                   art alone can carry.">
+                   <img src="images/gallery-images/gallery-image-3.jpg" alt="Landing Page"/>
+                </a>
+
+                <!-- Tombol See More -->
+                <div class="see-more-container">
+                    <a href="moreaboutartist.html?artist=dynda-camelia" class="see-more-button">
+                        More About The Artists
+                    </a>
+                </div>
+
+        </aside>
+        <!--End of Gallery-->
+
+
+        <!--Content Section-->
+        <div id="services" class="scrollto clearfix">
+
+            <div class="row no-padding-bottom clearfix">
+
+
+                <!--Content Left Side-->
+                <div class="col-3">
+                    <!--User Testimonial-->
+                    <blockquote class="testimonial text-right bigtest">
+                        <q>The purpose of art is washing the dust of daily life off our souls.</q>
+                        <footer>— Pablo Picasso</footer>
+                    </blockquote>
+                    <!-- End of Testimonial-->
+
+                </div>
+                <!--End Content Left Side-->
+
+                <!--Content of the Right Side-->
+                <div class="col-3">
+                    <div class="section-heading">
+                        <h3>TIPS & TUTORIALS</h3>
+                        <h2 class="section-title">6 Graphic Design Fundamentals Every Creative Should Know</h2>
+                        <p class="section-subtitle">Learn the core building blocks that shape every powerful visual design. Whether you're just starting or refining your style, 
+                            these essentials help you create designs that not only look good — but communicate clearly.</p>
+                    </div>
+                    <p>1. Line :
+                         Use lines to lead the eye, separate elements, or create rhythm in your design.
+                    </p>
+
+                     <p>2. Shape :
+                        Shapes build structure. Geometric shapes feel modern, while organic ones add personality.
+                    </p>
+
+                       <p>3. Color :
+                        Color sets the mood. Learn basic color theory to create harmony and emotion.
+                    </p>
+
+                    <p>
+                        4. Texture :
+                        Add visual interest with textures — from subtle patterns to bold details.
+                    </p>
+
+                     <p>
+                        5. Space : 
+                        Negative space is powerful. It improves clarity and draws focus to key elements.
+                    </p>
+                    
+                    <p>
+                        5. Typography : 
+                        Fonts matter. Use type to show hierarchy, tone, and guide the reader's eye.
+                    </p>
+
+                    <!-- Just replace the Video ID "UYJ5IjBRlW8" with the ID of your video on YouTube (Found within the URL) -->
+                    <ahref="#" data-videoid="YqQx75OPRa0" data-videosite="youtube" class="button video link-lightbox">
+                        WATCH THE MATERIAL VIDEO <i class="fa fa-play" aria-hidden="true"></i>
+                </div>
+                <!--End Content Right Side-->
+
+                <div class="col-3">
+                    <img src="images/dancer.jpg" alt="Dancer"/>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!--End of Content Section-->
+
+        <!--Testimonials-->
+        <aside id="testimonials" class="scrollto text-center" data-enllax-ratio=".2">
+
+            <div class="row clearfix">
+
+                <div class="section-heading">
+                    <h3>Pages from the process</h3>
+                    <h2 class="section-title">What our artists are saying</h2>
+                </div>
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="images/profile-images/hanum-photo.jpg" alt="User"/>
+                    <q>I used to think my ideas were too weird to matter. But once I started putting them into my work, 
+                        I realized that's what made them special. Pixelaria reminded me that there's always someone who needs your kind of different.</q>
+                    <footer>Hanum - Multimedia Students (Batch 2023)</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="images/riyana-photo(1).jpg" alt="User"/>
+                    <q>My first UI looked like chaos. I wanted to quit. Instead, I redesigned it again and again. 
+                        Now I look at my work and think—this is what growth looks like.</q>
+                    <footer>Riri - Multimedia Students (Batch 2023)</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+                <!--User Testimonial-->
+                <blockquote class="col-3 testimonial classic">
+                    <img src="images/dynda-photo.jpg" alt="User"/>
+                    <q>I had to redo an entire scene two days before submission. I almost gave up. 
+                        But when I saw it play smoothly at the showcase, I remembered why I started.</q>
+                    <footer>Dynda - Multimedia Students (Batch 2023)</footer>
+                </blockquote>
+                <!-- End of Testimonial-->
+
+            </div>
+
+        </aside>
+        <!--End of Testimonials-->
+
+        <!--Clients-->
+        <section id="clients" class="scrollto clearfix">
+            <div class="row clearfix">
+
+                <div class="col-3">
+
+                    <div class="section-heading">
+                        <h3>MEET OUR ARTISTS</h3>
+                        <h2 class="section-title">Wall Of Fame</h2>
+                        <p class="section-subtitle">A celebration of creativity and excellence- meet the people behind
+                            the amazing masterpiece. Each portrait represents a unique talent, for more of their works
+                            you can click their pictures!</p>
+                    </div>
+
+                </div>
+
+                <div class="col-2-3">
+
+                    <a href="#" class="col-3" data-artist="hanum-febriyani">
+                        <img src="images/wall-of-fame-images/hanum-photo.jpg" alt="Company"/>
+                        <div class="client-overlay"><span>Hanum Febriyani</span></div>
+                    </a>
+                    <a href="#" class="col-3" data-artist="riyana-alifiya">
+                        <img src="images/wall-of-fame-images/riyana-photo.jpg" alt="Company"/>
+                        <div class="client-overlay"><span>Riyana Alifiya</span></div>
+                    </a>
+                    <a href="#" class="col-3" data-artist="dynda-camelia">
+                        <img src="images/wall-of-fame-images/dynda-photo.jpg" alt="Company"/>
+                        <div class="client-overlay"><span>Dynda Camelia</span></div>
+                    </a>
+                    <a href="#" class="col-3" data-artist="michael-davin">
+                        <img src="images/wall-of-fame-images/michael-photo.jpg" alt="Company"/>
+                        <div class="client-overlay"><span>Michael Davin</span></div>
+                    </a>
+                    <a href="#" class="col-3" data-artist="ilham-firdaus">
+                        <img src="images/wall-of-fame-images/ilham-photo.jpg" alt="Company"/>
+                        <div class="client-overlay"><span>Ilham Firdaus</span></div>
+                    </a>
+                    <a href="#" class="col-3" data-artist="fauziah-tsania">
+                        <img src="images/wall-of-fame-images/fauziah-photo.jpg" alt="Company"/>
+                        <div class="client-overlay"><span>Fauziah Tsania</span></div>
+                    </a>
+                    <a href="#" class="col-3" data-artist="risya-adhi">
+                        <img src="images/wall-of-fame-images/risya-photo.jpg" alt="Company"/>
+                        <div class="client-overlay"><span>Risya Adhi</span></div>
+                    </a>
+                    <a href="#" class="col-3" data-artist="fachri-alpiansyah">
+                        <img src="images/wall-of-fame-images/fachri-photo.jpg" alt="Company"/>
+                        <div class="client-overlay"><span>Fachri Alpiansyah</span></div>
+                    </a>
+
+                    <a href="#" class="col-3" data-artist="fadlila-zahra">
+                        <img src="images/wall-of-fame-images/zahra-photo.jpg" alt="Company"/>
+                        <div class="client-overlay"><span>Fadlila Zahra</span></div>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+        <!--End of Clients-->
+
+    <!--Footer-->
+    <footer id="landing-footer" class="clearfix">
+        <div class="row clearfix">
+
+            <p id="copyright" class="col-2">By <a href="https://www.shapingrain.com">Pixelaria</a></p>
+        </div>
+    </footer>
+    <!--End of Footer-->
+
+</div>
+
+<!-- Include JavaScript resources -->
+<script src="js/jquery.1.8.3.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/featherlight.min.js"></script>
+<script src="js/featherlight.gallery.min.js"></script>
+<script src="js/jquery.enllax.min.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.stickyNavbar.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/images-loaded.min.js"></script>
+<script src="js/lightbox.min.js"></script>
+<script src="js/site.js"></script>
+
+
+</body>
+</html>
